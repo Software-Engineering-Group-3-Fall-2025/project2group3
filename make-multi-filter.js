@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /**
  * makes a filter function that repeatedly applies multiple filters to an array
  * @param {Array} originalArray - array to be filtered
