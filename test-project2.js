@@ -23,7 +23,7 @@ function arraysAreTheSame(a1, a2) {
   if (!Array.isArray(a1) || !Array.isArray(a2) || (a1.length !== a2.length)) {
     return false;
   }
-  for (var i = 0; i < a1.length; i += 1) {
+  for (let i = 0; i < a1.length; i += 1) {
     if (a1[i] !== a2[i]) {
       return false;
     }
