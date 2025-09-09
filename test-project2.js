@@ -9,13 +9,14 @@
 
 /* eslint-env browser, node */
 
+(function () {
 // Result message for Problems 1-3
-var p1Message = 'SUCCESS';
-var p2Message = 'SUCCESS';
-var p3Message = 'SUCCESS';
+let p1Message = 'SUCCESS';
+let p2Message = 'SUCCESS';
+let p3Message = 'SUCCESS';
 
 // Keep track of all the var statements
-var varDeclared = ['varDeclared', 'p1Message', 'p2Message', 'p3Message'];
+let varDeclared = ['varDeclared', 'p1Message', 'p2Message', 'p3Message'];
 
 // Utility functions
 function arraysAreTheSame(a1, a2) {
@@ -36,23 +37,23 @@ if (typeof MakeMultiFilter !== 'function') {
   console.error('MakeMultiFilter is not a function', typeof MakeMultiFilter);
   p1Message = 'FAILURE';
 } else {
-  var originalArray = [1, 2, 3];
-  var filterFunc = window.MakeMultiFilter(originalArray);
+  let originalArray = [1, 2, 3];
+  let filterFunc = window.MakeMultiFilter(originalArray);
 
-  var secondArray = [1, 2, 3, 4];
-  var filterFuncTwo = window.MakeMultiFilter(secondArray);
+  let secondArray = [1, 2, 3, 4];
+  let filterFuncTwo = window.MakeMultiFilter(secondArray);
 
   if (typeof filterFunc !== 'function') {
     console.error('MakeMultiFilter does not return a function', filterFunc);
     p1Message = 'FAILURE';
   } else {
-    var result = filterFunc();
+    let result = filterFunc();
     if (!arraysAreTheSame([1, 2, 3], result)) {
       console.error('filter function with no args does not return the original array', result);
       p1Message = 'FAILURE';
     }
 
-    var callbackPerformed = false;
+    let callbackPerformed = false;
     result = filterFunc(function (item) {
       return item !== 2;
     }, function (callbackResult) {
@@ -112,11 +113,11 @@ if (typeof TemplateProcessor !== 'function') {
   console.error('TemplateProcessor is not a function', typeof TemplateProcessor);
   p2Message = 'FAILURE';
 } else {
-  var template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
-  var dateTemplate = new TemplateProcessor(template);
+  let template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
+  let dateTemplate = new TemplateProcessor(template);
 
-  var dictionary = { month: 'July', day: '1', year: '2016' };
-  var str = dateTemplate.fillIn(dictionary);
+  let dictionary = { month: 'July', day: '1', year: '2016' };
+  let str = dateTemplate.fillIn(dictionary);
 
   if (str !== 'My favorite month is July but not the day 1 or the year 2016') {
     console.error('TemplateProcessor didn\'t work');
@@ -154,3 +155,4 @@ window.onload = function () {
   document.getElementById('p2').innerHTML = p2Message;
   document.getElementById('p3').innerHTML = p3Message;
 };
+})();
