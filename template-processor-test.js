@@ -1,4 +1,5 @@
 import assert from "assert";
+import { TemplateProcessor } from "./template-processor.js";
 
 const template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
 const dateTemplate = new TemplateProcessor(template);
