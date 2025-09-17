@@ -1,18 +1,16 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "airbnb-base"
-  ],
+  "extends": ["eslint:recommended", "airbnb-base"],
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "script"          // classic scripts, not modules
   },
   "env": {
     "node": true,
-    "es6": true
+    "browser": true,                // <— add this so browser globals (window) are allowed
+    "es2021": true
   },
   "rules": {
-    "no-console": 0,
+    "strict": ["error", "global"],  // <— allow a single 'use strict' at the top
     "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-restricted-syntax": [
       "error",
@@ -22,12 +20,13 @@
       "error",
       {
         "vars": "all",
-        "varsIgnorePattern": "MakeMultiFilter|TemplateProcessor",
+        "varsIgnorePattern": "MakeMultiFilter|TemplateProcessor|Project2Results",
         "args": "after-used",
         "ignoreRestSiblings": true
       }
     ],
-    "strict": ["error", "never"],
+
+    // keep your relaxed style choices if you want:
     "import/extensions": ["error", "ignorePackages", { "js": "always", "mjs": "always", "jsx": "always" }],
     "import/prefer-default-export": 0,
     "no-var": 0,

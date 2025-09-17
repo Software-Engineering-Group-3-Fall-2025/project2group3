@@ -1,4 +1,5 @@
-// Constructor + prototype (no ES6 `class` per spec)
+'use strict';
+
 function TemplateProcessor(template) {
   this.template = String(template ?? '');
 }
@@ -15,9 +16,15 @@ TemplateProcessor.prototype.fillIn = function (dictionary) {
     }
   }
 
-  // Remove any leftover well-formed placeholders {{...}} individually
+  // Remove any remaining {{...}} placeholders
   result = result.replace(/{{[^{}]*}}/g, '');
   return result;
 };
 
-export { TemplateProcessor };
+// UMD-style exposure (browser + Node)
+if (typeof globalThis !== 'undefined') {
+  globalThis.TemplateProcessor = TemplateProcessor;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = TemplateProcessor;
+}
