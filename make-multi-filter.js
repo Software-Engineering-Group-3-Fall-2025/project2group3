@@ -1,4 +1,6 @@
-"use strict";
+/* eslint-env node */
+/* eslint strict: ["error", "global"] */
+'use strict';
 /**
  * makes a filter function that repeatedly applies multiple filters to an array
  * @param {Array} originalArray - array to be filtered
